@@ -15,16 +15,20 @@ public class AirportService {
 
     @Autowired
     AirportRepository airportRepository;
+
+    public AirportService() {
+    }
+
     public void addAirport(Airport airport) {
         this.airportRepository.addAirport(airport);
     }
 
     public String getLargestAirportName() {
-       return airportRepository.getLargestAirportName();
+        return this.airportRepository.getLargestAirportName();
     }
 
     public double getShortestDurationOfPossibleBetweenTwoCities(City fromCity, City toCity) {
-        return airportRepository.getShortestDurationOfPossibleBetweenTwoCities(fromCity,toCity);
+        return this.airportRepository.getShortestDurationOfPossibleBetweenTwoCities(fromCity, toCity);
     }
 
     public void addFlight(Flight flight) {
@@ -32,7 +36,7 @@ public class AirportService {
     }
 
     public int getNumberOfPeopleOn(Date date, String airportName) {
-        return airportRepository.getNumberOfPeopleOn(date,airportName);
+        return this.airportRepository.getNumberOfPeopleOn(date, airportName);
     }
 
     public void addPassenger(Passenger passenger) {
@@ -44,11 +48,11 @@ public class AirportService {
     }
 
     public String bookATicket(Integer flightId, Integer passengerId) {
-        return this.airportRepository.bookATicket(flightId,passengerId);
+        return this.airportRepository.bookATicket(flightId, passengerId);
     }
 
     public String cancelATicket(Integer flightId, Integer passengerId) {
-        return this.airportRepository.cancelATicket(flightId,passengerId);
+        return this.airportRepository.cancelATicket(flightId, passengerId);
     }
 
     public int countOfBookingsDoneByPassengerAllCombined(Integer passengerId) {
