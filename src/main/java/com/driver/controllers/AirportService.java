@@ -5,8 +5,11 @@ import com.driver.model.City;
 import com.driver.model.Flight;
 import com.driver.model.Passenger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
+
+@Service
 
 public class AirportService {
 
@@ -46,5 +49,9 @@ public class AirportService {
 
     public String cancelATicket(Integer flightId, Integer passengerId) {
         return this.airportRepository.cancelATicket(flightId,passengerId);
+    }
+
+    public int countOfBookingsDoneByPassengerAllCombined(Integer passengerId) {
+        return this.airportRepository.countOfBookingsDoneByPassengerAllCombined(passengerId);
     }
 }

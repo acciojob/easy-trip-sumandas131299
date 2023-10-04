@@ -4,10 +4,13 @@ import com.driver.model.Airport;
 import com.driver.model.City;
 import com.driver.model.Flight;
 import com.driver.model.Passenger;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+
+@Repository
 
 public class AirportRepository {
 
@@ -106,5 +109,13 @@ public class AirportRepository {
             }
         }
         return "FAILURE";
+    }
+
+    public int countOfBookingsDoneByPassengerAllCombined(Integer passengerId) {
+        int count =0;
+        for(ArrayList<Integer> list : Noofpassinger.values()){
+            if(list.contains(passengerId)) count++;
+        }
+        return count;
     }
 }
