@@ -13,8 +13,8 @@ import java.util.Date;
 
 public class AirportService {
 
-    @Autowired
-    AirportRepository airportRepository;
+
+    AirportRepository airportRepository = new AirportRepository();
 
     public AirportService() {
     }

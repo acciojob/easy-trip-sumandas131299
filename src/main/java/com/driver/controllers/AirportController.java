@@ -6,6 +6,7 @@ import com.driver.model.City;
 import com.driver.model.Flight;
 import com.driver.model.Passenger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -15,11 +16,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+@Component
 @RestController
 public class AirportController {
 
-    @Autowired
-AirportService airportService;
+
+    AirportService airportService=new AirportService();
 
     public AirportController() {
     }

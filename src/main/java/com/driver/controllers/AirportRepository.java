@@ -168,7 +168,7 @@ public class AirportRepository {
     }
 
     public int calculateRevenueOfAFlight(Integer flightId) {
-        return ((ArrayList)this.Noofpassinger.get(flightId)).size() * (3000 + (((ArrayList)this.Noofpassinger.get(flightId)).size() - 1) * 50);
+        return ((ArrayList)this.Noofpassinger.get(flightId)).size() * (3000 + (((ArrayList)this.Noofpassinger.get(flightId)).size()) * 50);
     }
 
     public int calculateFlightFare(Integer flightId) {
