@@ -19,13 +19,16 @@ import java.util.Objects;
 public class AirportController {
 
     @Autowired
+    AirportService airportService;
     @PostMapping("/add_airport")
     public String addAirport(@RequestBody Airport airport){
+
+        return this.airportService.addAirport(airport);
 
         //Simply add airport details to your database
         //Return a String message "SUCCESS"
 
-        return "SUCCESS";
+
     }
 
     @GetMapping("/get-largest-aiport")
