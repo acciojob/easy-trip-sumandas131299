@@ -15,8 +15,7 @@ import java.util.Iterator;
 
 public class AirportRepository {
 
-
-    int calculateFlightFare =0;
+    int calculateFlightFare = 0;
     HashMap<String, Airport> airportmap = new HashMap();
     HashMap<Integer, Flight> flightHashMap = new HashMap();
     HashMap<Integer, Passenger> passengerHashMap = new HashMap();
@@ -104,16 +103,14 @@ public class AirportRepository {
     public String getAirportNameFromFlightId(Integer flightId) {
         Iterator var2 = this.flightHashMap.values().iterator();
 
-        Flight id;
-        do {
-            if (!var2.hasNext()) {
-                return null;
+        while(var2.hasNext()) {
+            Flight id = (Flight)var2.next();
+            if (id.getFlightId() == flightId) {
+                return id.getFromCity().name();
             }
+        }
 
-            id = (Flight)var2.next();
-        } while(id.getFlightId() != flightId);
-
-        return id.getFromCity().name();
+        return null;
     }
 
     public String bookATicket(Integer flightId, Integer passengerId) {
@@ -144,17 +141,15 @@ public class AirportRepository {
         } else {
             Iterator var3 = ((ArrayList)this.Noofpassinger.get(flightId)).iterator();
 
-            int pass;
-            do {
-                if (!var3.hasNext()) {
-                    return "FAILURE";
+            while(var3.hasNext()) {
+                int pass = (Integer)var3.next();
+                if (pass == passengerId) {
+                    ((ArrayList)this.Noofpassinger.get(flightId)).remove(passengerId);
+                    return "SUCCESS";
                 }
+            }
 
-                pass = (Integer)var3.next();
-            } while(pass != passengerId);
-
-            ((ArrayList)this.Noofpassinger.get(flightId)).remove(passengerId);
-            return "SUCCESS";
+            return "FAILURE";
         }
     }
 
@@ -173,11 +168,10 @@ public class AirportRepository {
     }
 
     public int calculateRevenueOfAFlight(Integer flightId) {
-        return Noofpassinger.get(flightId).size() * (3000 +( (Noofpassinger.get(flightId).size()-1)*50));
+        return ((ArrayList)this.Noofpassinger.get(flightId)).size() * (3000 + (((ArrayList)this.Noofpassinger.get(flightId)).size() - 1) * 50);
     }
 
     public int calculateFlightFare(Integer flightId) {
-
-        return 3000 +( (Noofpassinger.get(flightId).size()-1)*50);
+        return 3000 + (((ArrayList)this.Noofpassinger.get(flightId)).size() - 1) * 50;
     }
 }

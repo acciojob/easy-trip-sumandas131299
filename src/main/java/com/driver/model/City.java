@@ -10,8 +10,6 @@ public enum City {
     KOLKATA,
     CHENNAI;
 
-    private City(){
-
+    private City() {
     }
-
 }

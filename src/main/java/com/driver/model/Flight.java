@@ -4,20 +4,14 @@ import java.util.Date;
 
 public class Flight {
 
-    private int flightId; //This is a unique key for a flight
-
+    private int flightId;
     private City fromCity;
-
     private City toCity;
-
     private int maxCapacity;
-
     private Date flightDate;
-
     private double duration;
 
     public Flight() {
-
     }
 
     public Flight(int flightId, City fromCity, City toCity, int maxCapacity, Date flightDate, double duration) {
@@ -30,7 +24,7 @@ public class Flight {
     }
 
     public int getFlightId() {
-        return flightId;
+        return this.flightId;
     }
 
     public void setFlightId(int flightId) {
@@ -38,7 +32,7 @@ public class Flight {
     }
 
     public City getFromCity() {
-        return fromCity;
+        return this.fromCity;
     }
 
     public void setFromCity(City fromCity) {
@@ -46,7 +40,7 @@ public class Flight {
     }
 
     public City getToCity() {
-        return toCity;
+        return this.toCity;
     }
 
     public void setToCity(City toCity) {
@@ -54,7 +48,7 @@ public class Flight {
     }
 
     public int getMaxCapacity() {
-        return maxCapacity;
+        return this.maxCapacity;
     }
 
     public void setMaxCapacity(int maxCapacity) {
@@ -62,7 +56,7 @@ public class Flight {
     }
 
     public Date getFlightDate() {
-        return flightDate;
+        return this.flightDate;
     }
 
     public void setFlightDate(Date flightDate) {
@@ -70,11 +64,10 @@ public class Flight {
     }
 
     public double getDuration() {
-        return duration;
+        return this.duration;
     }
 
     public void setDuration(double duration) {
         this.duration = duration;
     }
-
 }

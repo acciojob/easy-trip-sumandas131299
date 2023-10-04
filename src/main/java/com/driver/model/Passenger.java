@@ -2,16 +2,12 @@ package com.driver.model;
 
 public class Passenger {
 
-    private int passengerId; //This is a unique key for Passenger model :
-
+    private int passengerId;
     private String email;
-
     private String name;
-
     private int age;
 
     public Passenger() {
-
     }
 
     public Passenger(int passengerId, String email, String name, int age) {
@@ -22,7 +18,7 @@ public class Passenger {
     }
 
     public int getPassengerId() {
-        return passengerId;
+        return this.passengerId;
     }
 
     public void setPassengerId(int passengerId) {
@@ -30,7 +26,7 @@ public class Passenger {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {
@@ -38,7 +34,7 @@ public class Passenger {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -46,7 +42,7 @@ public class Passenger {
     }
 
     public int getAge() {
-        return age;
+        return this.age;
     }
 
     public void setAge(int age) {

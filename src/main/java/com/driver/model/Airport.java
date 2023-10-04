@@ -4,11 +4,9 @@ package com.driver.model;
 
 public class Airport {
 
-    private String airportName; //This is the unique key
-
+    private String airportName;
     private int noOfTerminals;
-
-    private City city;  //GIVEN : There will be only 1 airport in 1 city
+    private City city;
 
     public Airport() {
     }
@@ -20,7 +18,7 @@ public class Airport {
     }
 
     public String getAirportName() {
-        return airportName;
+        return this.airportName;
     }
 
     public void setAirportName(String airportName) {
@@ -28,7 +26,7 @@ public class Airport {
     }
 
     public int getNoOfTerminals() {
-        return noOfTerminals;
+        return this.noOfTerminals;
     }
 
     public void setNoOfTerminals(int noOfTerminals) {
@@ -36,7 +34,7 @@ public class Airport {
     }
 
     public City getCity() {
-        return city;
+        return this.city;
     }
 
     public void setCity(City city) {
