@@ -116,23 +116,36 @@ public class AirportRepository {
     }
 
     public String bookATicket(Integer flightId, Integer passengerId) {
-        Iterator var3 = this.flightHashMap.values().iterator();
 
-        Flight fly;
-        do {
-            if (var3.hasNext()) {
-                if (((ArrayList)this.Noofpassinger.get(flightId)).contains(passengerId)) {
-                    return "FAILURE";
-                }
-
-                ((ArrayList)this.Noofpassinger.get(flightId)).add(passengerId);
-                return "SUCCESS";
+        for(Flight fly : this.flightHashMap.values()){
+            if(fly.getFlightId()==flightId){
+                if(fly.getMaxCapacity() <= ((ArrayList)this.Noofpassinger.get(flightId)).size()) return "FAILURE";
             }
+            else return "FAILURE";
+        }
+        if(this.Noofpassinger.get(flightId).contains(passengerId)) return "FAILURE";
+        else {((ArrayList)this.Noofpassinger.get(flightId)).add(passengerId);
+               return "SUCCESS";
+        }
 
-            fly = (Flight)var3.next();
-        } while(fly.getFlightId() != flightId || fly.getMaxCapacity() <= ((ArrayList)this.Noofpassinger.get(flightId)).size());
 
-        return "FAILURE";
+//        Iterator var3 = this.flightHashMap.values().iterator();
+//
+//        Flight fly;
+//        do {
+//            if (var3.hasNext()) {
+//                if (((ArrayList)this.Noofpassinger.get(flightId)).contains(passengerId)) {
+//                    return "FAILURE";
+//                }
+//
+//                ((ArrayList)this.Noofpassinger.get(flightId)).add(passengerId);
+//                return "SUCCESS";
+//            }
+//
+//            fly = (Flight)var3.next();
+//        } while(fly.getFlightId() != flightId || fly.getMaxCapacity() <= ((ArrayList)this.Noofpassinger.get(flightId)).size());
+//
+//        return "FAILURE";
     }
 
     public String cancelATicket(Integer flightId, Integer passengerId) {
