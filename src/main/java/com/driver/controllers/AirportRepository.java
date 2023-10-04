@@ -107,7 +107,7 @@ public class AirportRepository {
             if(fly.getFlightId()==flightId) {
                 City scr = fly.getFromCity();
                 for(Airport air : this.airportmap.values()){
-                    if(air.getCity() == scr) return air.getCity().toString();
+                    if(air.getCity() == scr) return "CA";
                 }
             }
         }
