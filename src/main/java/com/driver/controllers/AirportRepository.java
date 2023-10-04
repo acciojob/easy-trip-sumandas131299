@@ -120,7 +120,7 @@ public class AirportRepository {
 
         Flight fly;
         do {
-            if (!var3.hasNext()) {
+            if (var3.hasNext()) {
                 if (((ArrayList)this.Noofpassinger.get(flightId)).contains(passengerId)) {
                     return "FAILURE";
                 }
