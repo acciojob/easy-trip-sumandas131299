@@ -23,21 +23,22 @@ public class AirportController {
     @PostMapping("/add_airport")
     public String addAirport(@RequestBody Airport airport){
 
-        return this.airportService.addAirport(airport);
+        this.airportService.addAirport(airport);
 
         //Simply add airport details to your database
         //Return a String message "SUCCESS"
 
-
+        return "SUCCESS";
     }
 
     @GetMapping("/get-largest-aiport")
     public String getLargestAirportName(){
 
+
         //Largest airport is in terms of terminals. 3 terminal airport is larger than 2 terminal airport
         //Incase of a tie return the Lexicographically smallest airportName
 
-       return null;
+       return airportService.getLargestAirportName();
     }
 
     @GetMapping("/get-shortest-time-travel-between-cities")
@@ -46,7 +47,7 @@ public class AirportController {
         //Find the duration by finding the shortest flight that connects these 2 cities directly
         //If there is no direct flight between 2 cities return -1.
 
-       return 0;
+       return airportService.getShortestDurationOfPossibleBetweenTwoCities(fromCity,toCity);
     }
 
     @GetMapping("/get-number-of-people-on-airport-on/{date}")
@@ -104,8 +105,10 @@ public class AirportController {
     @PostMapping("/add-flight")
     public String addFlight(@RequestBody Flight flight){
 
+
+        this.airportService.addFlight(flight);
         //Return a "SUCCESS" message string after adding a flight.
-       return null;
+       return "SUCCESS";
     }
 
 
