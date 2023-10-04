@@ -5,6 +5,7 @@ import com.driver.model.City;
 import com.driver.model.Flight;
 import com.driver.model.Passenger;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -13,11 +14,13 @@ public class AirportRepository {
     HashMap <String ,Airport> airportmap ;
     HashMap <Integer , Flight > flightHashMap ;
     HashMap <Integer , Passenger > passengerHashMap ;
+    HashMap <Integer , ArrayList<Integer>> Noofpassinger ;
 
     AirportRepository(){
         this.airportmap = new HashMap<>();
         this.flightHashMap = new HashMap<>();
         this.passengerHashMap = new HashMap<>();
+        this.Noofpassinger = new HashMap<>();
     }
     public void addAirport(Airport airport) {
        String name =  airport.getAirportName();
@@ -60,7 +63,7 @@ public class AirportRepository {
         int count =0;
         for (Flight fly : flightHashMap.values()){
 
-            if((airportName == fly.getFromCity().toString() || airportName==fly.getToCity().toString()) && fly.getFlightDate()==date) count+=fly.getMaxCapacity();
+            if((airportName == fly.getFromCity().name() || airportName==fly.getToCity().name()) && fly.getFlightDate()==date) count+=fly.getMaxCapacity();
         }
         return count;
     }
@@ -68,5 +71,40 @@ public class AirportRepository {
     public void addPassenger(Passenger passenger) {
         int id = passenger.getPassengerId();
         passengerHashMap.put(id,passenger);
+    }
+
+    public String getAirportNameFromFlightId(Integer flightId) {
+        for(Flight id : flightHashMap.values()){
+            if(id.getFlightId() == flightId){
+                return id.getFromCity().name();
+            }
+        }return null;
+    }
+
+    public String bookATicket(Integer flightId, Integer passengerId) {
+
+        for( Flight fly : flightHashMap.values()){
+           if(fly.getFlightId()==flightId) {
+               if (fly.getMaxCapacity() > Noofpassinger.get(flightId).size()) return "FAILURE";
+           }
+        }
+
+        if(Noofpassinger.get(flightId).contains(passengerId)) return "FAILURE";
+        else Noofpassinger.get(flightId).add(passengerId);
+        return "SUCCESS";
+
+    }
+
+    public String cancelATicket(Integer flightId, Integer passengerId) {
+        if(!Noofpassinger.containsKey(flightId)) return "FAILURE";
+        if (!Noofpassinger.get(flightId).contains(passengerId)) return "FAILURE";
+
+        for(int pass : Noofpassinger.get(flightId)){
+            if(pass == passengerId){
+                Noofpassinger.get(flightId).remove(passengerId);
+                return "SUCCESS";
+            }
+        }
+        return "FAILURE";
     }
 }

@@ -35,4 +35,16 @@ public class AirportService {
     public void addPassenger(Passenger passenger) {
         this.airportRepository.addPassenger(passenger);
     }
+
+    public String getAirportNameFromFlightId(Integer flightId) {
+        return this.airportRepository.getAirportNameFromFlightId(flightId);
+    }
+
+    public String bookATicket(Integer flightId, Integer passengerId) {
+        return this.airportRepository.bookATicket(flightId,passengerId);
+    }
+
+    public String cancelATicket(Integer flightId, Integer passengerId) {
+        return this.airportRepository.cancelATicket(flightId,passengerId);
+    }
 }
