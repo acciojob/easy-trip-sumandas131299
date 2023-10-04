@@ -54,4 +54,12 @@ public class AirportService {
     public int countOfBookingsDoneByPassengerAllCombined(Integer passengerId) {
         return this.airportRepository.countOfBookingsDoneByPassengerAllCombined(passengerId);
     }
+
+    public int calculateRevenueOfAFlight(Integer flightId) {
+        return this.airportRepository.calculateRevenueOfAFlight(flightId);
+    }
+
+    public int calculateFlightFare(Integer flightId) {
+        return this.airportRepository.calculateFlightFare(flightId);
+    }
 }

@@ -118,4 +118,12 @@ public class AirportRepository {
         }
         return count;
     }
+
+    public int calculateRevenueOfAFlight(Integer flightId) {
+        return 1;
+    }
+
+    public int calculateFlightFare(Integer flightId) {
+        return 1;
+    }
 }
