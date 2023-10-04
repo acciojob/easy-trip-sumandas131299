@@ -3,17 +3,21 @@ package com.driver.controllers;
 import com.driver.model.Airport;
 import com.driver.model.City;
 import com.driver.model.Flight;
+import com.driver.model.Passenger;
 
+import java.util.Date;
 import java.util.HashMap;
 
 public class AirportRepository {
 
     HashMap <String ,Airport> airportmap ;
     HashMap <Integer , Flight > flightHashMap ;
+    HashMap <Integer , Passenger > passengerHashMap ;
 
     AirportRepository(){
         this.airportmap = new HashMap<>();
         this.flightHashMap = new HashMap<>();
+        this.passengerHashMap = new HashMap<>();
     }
     public void addAirport(Airport airport) {
        String name =  airport.getAirportName();
@@ -50,5 +54,19 @@ public class AirportRepository {
     public void addFlight(Flight flight) {
         int id = flight.getFlightId();
         flightHashMap.put(id,flight);
+    }
+
+    public int getNumberOfPeopleOn(Date date, String airportName) {
+        int count =0;
+        for (Flight fly : flightHashMap.values()){
+
+            if((airportName == fly.getFromCity().toString() || airportName==fly.getToCity().toString()) && fly.getFlightDate()==date) count+=fly.getMaxCapacity();
+        }
+        return count;
+    }
+
+    public void addPassenger(Passenger passenger) {
+        int id = passenger.getPassengerId();
+        passengerHashMap.put(id,passenger);
     }
 }

@@ -3,7 +3,10 @@ package com.driver.controllers;
 import com.driver.model.Airport;
 import com.driver.model.City;
 import com.driver.model.Flight;
+import com.driver.model.Passenger;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Date;
 
 public class AirportService {
 
@@ -23,5 +26,13 @@ public class AirportService {
 
     public void addFlight(Flight flight) {
         this.airportRepository.addFlight(flight);
+    }
+
+    public int getNumberOfPeopleOn(Date date, String airportName) {
+        return airportRepository.getNumberOfPeopleOn(date,airportName);
+    }
+
+    public void addPassenger(Passenger passenger) {
+        this.airportRepository.addPassenger(passenger);
     }
 }

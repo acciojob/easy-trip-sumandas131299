@@ -13,4 +13,5 @@ public enum City {
     private City(){
 
     }
+
 }
