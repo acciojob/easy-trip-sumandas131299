@@ -41,7 +41,7 @@ public class AirportRepository {
                 name = air.getAirportName();
             } else if (air.getNoOfTerminals() == max) {
                 int retval = name.compareTo(air.getAirportName());
-                if (retval < 0) {
+                if (retval > 0) {
                     name = air.getAirportName();
                 }
             }
