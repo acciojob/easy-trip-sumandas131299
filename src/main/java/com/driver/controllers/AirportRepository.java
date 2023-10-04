@@ -15,6 +15,8 @@ import java.util.Iterator;
 
 public class AirportRepository {
 
+
+    int calculateFlightFare =0;
     HashMap<String, Airport> airportmap = new HashMap();
     HashMap<Integer, Flight> flightHashMap = new HashMap();
     HashMap<Integer, Passenger> passengerHashMap = new HashMap();
@@ -171,10 +173,11 @@ public class AirportRepository {
     }
 
     public int calculateRevenueOfAFlight(Integer flightId) {
-        return 1;
+        return Noofpassinger.get(flightId).size() * (3000 +( (Noofpassinger.get(flightId).size()-1)*50));
     }
 
     public int calculateFlightFare(Integer flightId) {
-        return 1;
+
+        return 3000 +( (Noofpassinger.get(flightId).size()-1)*50);
     }
 }
