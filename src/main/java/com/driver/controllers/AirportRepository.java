@@ -101,12 +101,14 @@ public class AirportRepository {
     }
 
     public String getAirportNameFromFlightId(Integer flightId) {
-        Iterator var2 = this.flightHashMap.values().iterator();
 
-        while(var2.hasNext()) {
-            Flight id = (Flight)var2.next();
-            if (id.getFlightId() == flightId) {
-                return id.getFromCity().name();
+
+        for(Flight fly : this.flightHashMap.values()){
+            if(fly.getFlightId()==flightId) {
+                City scr = fly.getFromCity();
+                for(Airport air : this.airportmap.values()){
+                    if(air.getCity() == scr) return scr.name();
+                }
             }
         }
 
